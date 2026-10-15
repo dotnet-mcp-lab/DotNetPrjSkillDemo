@@ -1,0 +1,19 @@
+﻿{
+  "Id": "2",
+  "CustomerId": "5",
+  "OrderId": "ORD-002",
+  "Items": [
+    {
+      "Id": "ITEM-001",
+      "ItemName": "Product A",
+      "Quantity": 3,
+      "Price": 25.00
+    },
+    {
+      "Id": "ITEM-002",
+      "ItemName": "Product B",
+      "Quantity": 2,
+      "Price": 50.00
+    }
+  ]
+}

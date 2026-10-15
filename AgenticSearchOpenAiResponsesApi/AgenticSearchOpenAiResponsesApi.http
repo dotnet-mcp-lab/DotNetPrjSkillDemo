@@ -1,0 +1,41 @@
+@AgenticSearchOpenAiResponsesApi_HostAddress = http://localhost:5120
+
+### Initiate new conversation
+POST {{AgenticSearchOpenAiResponsesApi_HostAddress}}/v1/conversations
+Content-Type: application/json
+
+{
+  "items": [
+    {
+      "type": "message",
+      "role": "user",
+      "content": ""
+    }
+  ]
+}
+
+> {%
+    // Parse response and save to 'conv_id' global variable
+    client.global.set("conv_id", response.body.id);
+%}
+
+### Use conversation session to ask question 
+POST {{AgenticSearchOpenAiResponsesApi_HostAddress}}/rag/v1/responses
+Content-Type: application/json
+
+{
+  "stream": false,
+  "conversation": "{{conv_id}}",
+  "input": [
+    {
+      "type": "message",
+      "role": "user",
+      "content": [
+        {
+          "type": "input_text",
+          "text": "What are the products that Ervin Howell purchased?"
+        }
+      ]
+    }
+  ]
+}
